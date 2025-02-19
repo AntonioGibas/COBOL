@@ -1,0 +1,27 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. TASK1C
+       AUTHOR. Z26069.
+       ENVIRONMENT DIVISION.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 BROJ-A PIC 9(3)V99.
+       01 BROJ-B PIC 9(3)V99.
+       01 BROJ-C PIC 9(5)V999.
+       01 WS-BROJ-C PIC Z(4)9.999.
+       PROCEDURE DIVISION.
+
+           INITIALIZE BROJ-C.
+
+           ACCEPT BROJ-A.
+           DISPLAY "PRVI BROJ: " BROJ-A.
+
+           ACCEPT BROJ-B.
+           DISPLAY "DRUGI BROJ: " BROJ-B.
+
+           COMPUTE BROJ-C = (BROJ-A * BROJ-B).
+
+           MOVE BROJ-C TO WS-BROJ-C.
+
+           DISPLAY BROJ-C.
+           DISPLAY WS-BROJ-C.
+           STOP RUN.

@@ -1,0 +1,16 @@
+//CBLCMP JOB 1,NOTIFY=Z26069,MSGCLASS=X,MSGLEVEL=(1,1)
+//*********************************************************************/
+//COBRUN     EXEC IGYWCL
+//COBOL.SYSIN  DD DSN=Z26069.CBL(TASK1C),DISP=SHR
+//LKED.SYSLMOD DD DSN=Z26069.LOAD(TASK1C),DISP=SHR
+//*********************************************************************/
+//RUN   EXEC PGM=TASK1C
+//STEPLIB DD DSN=Z26069.LOAD,DISP=SHR
+//PRTLINE DD SYSOUT=X
+//SYSOUT  DD SYSOUT=X
+//CEEDUMP DD DUMMY
+//SYSDUMP DD DUMMY
+//GO.SYSIN   DD *
+11
+7
+/*
