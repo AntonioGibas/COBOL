@@ -3,7 +3,7 @@
 //COBRUN     EXEC IGYWCL
 //COBOL.SYSIN  DD DSN=Z26069.CBL(TASK5C),DISP=SHR
 //LKED.SYSLMOD DD DSN=Z26069.LOAD(TASK5C),DISP=SHR
-//**************************************************************
+//**********************************************************************
 //RUN  EXEC PGM=TASK5C,
 //          PARM='Muha bez uha? M.'
 //STEPLIB DD DSN=Z26069.LOAD,DISP=SHR
