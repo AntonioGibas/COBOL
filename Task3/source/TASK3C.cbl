@@ -1,6 +1,17 @@
+      ******************************************************************
+      * TASK3C - Otvaranje input datoteke INFL                         *
+      *        - Provjera ulaznog stringa u EVALUATE izrazu            *
+      *        - Poziv procedure ovisno o unesenom:                    *
+      *          - OPTION-1 - Izvodi paragraf OPT1-PARA - Upis poruke  *
+      *                       u izlazni dataset                        *
+      *          - OPTION-2 - Izvodi paragraf OPT2-PARA - Upis poruke  *
+      *                       u izlazni dataset                        *
+      *          - Sve druge opcije upisuju tekst "INVALID INPUT" u    *
+      *            izalzni dataset                                     *
+      ****************************************************************** 
        IDENTIFICATION DIVISION.
        PROGRAM-ID. TASK3C.
-
+      *
        ENVIRONMENT DIVISION.
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
