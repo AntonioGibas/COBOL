@@ -13,4 +13,4 @@ propertyGroups:
       - name: syslib
         type: local
         locations:
-          - '**'
+          - Z26069.**
