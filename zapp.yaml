@@ -13,5 +13,4 @@ propertyGroups:
       - name: syslib
         type: local
         locations:
-          - Z26069.**
-          - C:\Users\agibas\COBOL\obrada01\copylib
+          - '**'
