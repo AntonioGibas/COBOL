@@ -22,8 +22,8 @@
        
        PROCEDURE DIVISION.
        MAIN-PROCEDURE.
-           PERFORM POPULATE-TABLE
-           PERFORM DISPLAY-WITH-SUBSCRIPT
+            PERFORM POPULATE-TABLE
+      *     PERFORM DISPLAY-WITH-SUBSCRIPT
            PERFORM DISPLAY-WITH-COUNTER
            STOP RUN.
        
@@ -49,28 +49,30 @@
            MOVE "2023-02-10" TO PURCHASE-DATE(3)
            MOVE "2023-03-01" TO TRANSFER-DATE(3).
        
-       DISPLAY-WITH-SUBSCRIPT.
-           DISPLAY "Displaying using SUBSCRIPT:"
-           PERFORM VARYING WS-SUB FROM 1 BY 1
-               UNTIL WS-SUB > NUM-ENTRIES
-               DISPLAY "Entry: " WS-SUB
-               DISPLAY "Computer ID: " COMPUTER-ID(WS-SUB)
-               DISPLAY "Owner: " OWNER-NAME(WS-SUB)
-               DISPLAY "Email: " OWNER-EMAIL(WS-SUB)
-               DISPLAY "Purchased: " PURCHASE-DATE(WS-SUB)
-               DISPLAY "Transferred: " TRANSFER-DATE(WS-SUB)
-               DISPLAY " "
-           END-PERFORM.
+      *DISPLAY-WITH-SUBSCRIPT.
+      *    DISPLAY "Displaying using SUBSCRIPT:"
+      *    PERFORM VARYING WS-SUB FROM 1 BY 1
+      *        UNTIL WS-SUB > NUM-ENTRIES
+      *        DISPLAY "Entry: " WS-SUB
+      *        DISPLAY "Computer ID: " COMPUTER-ID(WS-SUB)
+      *        DISPLAY "Owner: " OWNER-NAME(WS-SUB)
+      *        DISPLAY "Email: " OWNER-EMAIL(WS-SUB)
+      *        DISPLAY "Purchased: " PURCHASE-DATE(WS-SUB)
+      *        DISPLAY "Transferred: " TRANSFER-DATE(WS-SUB)
+      *        DISPLAY " "
+      *    END-PERFORM.
        
        DISPLAY-WITH-COUNTER.
-           DISPLAY "Displaying using INDEX:"
+           DISPLAY "Displaying using COMPUTER-ID: "
            PERFORM VARYING I FROM 1 BY 1
-               UNTIL I > NUM-ENTRIES
-               DISPLAY "Entry: " I
-               DISPLAY "Computer ID: " COMPUTER-ID(I)
-               DISPLAY "Owner: " OWNER-NAME(I)
-               DISPLAY "Email: " OWNER-EMAIL(I)
-               DISPLAY "Purchased: " PURCHASE-DATE(I)
-               DISPLAY "Transferred: " TRANSFER-DATE(I)
-               DISPLAY " "
-           END-PERFORM.
+              UNTIL I > NUM-ENTRIES
+              IF COMPUTER-ID = "C003" OR "C002" THEN
+                 DISPLAY "Entry: " I
+                 DISPLAY "Computer ID: " COMPUTER-ID(I)
+                 DISPLAY "Owner: " OWNER-NAME(I)
+                 DISPLAY "Email: " OWNER-EMAIL(I)
+                 DISPLAY "Purchased: " PURCHASE-DATE(I)
+                 DISPLAY "Transferred: " TRANSFER-DATE(I)
+                 DISPLAY " "
+              END-IF
+           END-PERFORM. 
