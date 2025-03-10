@@ -1,0 +1,67 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. CBLMERGE.
+       AUTHOR Z26069.
+       ENVIRONMENT DIVISION. 
+       INPUT-OUTPUT SECTION. 
+       FILE-CONTROL.   
+       
+           SELECT INFL1-REC ASSIGN TO INFL1
+              ORGANIZATION IS SEQUENTIAL
+              FILE STATUS IS WS-FILE-STATUS1.
+
+           SELECT INFL2-REC ASSIGN TO INFL2
+              ORGANIZATION IS SEQUENTIAL
+              FILE STATUS IS WS-FILE-STATUS2.
+
+           SELECT OUTFL-REC ASSIGN TO OUTFL
+              ORGANIZATION IS SEQUENTIAL
+              FILE STATUS IS WS-FILE-STATUS3.
+
+       DATA DIVISION. 
+       FILE SECTION. 
+       FD INFL1-REC RECORDING MODE F.
+       01 INFL1-RECORD PIC X(100).
+       FD INFL2-REC RECORDING MODE F.
+       01 INFL2-RECORD PIC X(100).
+       FD OUTFL-REC RECORDING MODE F.
+       01 OUTFL-RECORD PIC X(100).
+
+       WORKING-STORAGE SECTION. 
+       01 WS-FLAGS.
+           05 WS-EOF1           PIC X(1) VALUE 'N'.
+              88 END-OF-FILE1   VALUE 'Y'.
+           05 WS-EOF2           PIC X(1) VALUE 'N'.
+              88 END-OF-FILE2   VALUE 'Y'.
+       01 WS-RECORD1            PIC X(100) VALUE SPACES.
+       01 WS-RECORD2            PIC X(100) VALUE SPACES.
+       01 WS-OUTPUT-RECORD      PIC X(100) VALUE SPACES.
+       01 WS-FILE-STATUS1       PIC X(2) VALUE '00'.
+       01 WS-FILE-STATUS2       PIC X(2) VALUE '00'.
+       01 WS-FILE-STATUS3       PIC X(2) VALUE '00'.
+
+       PROCEDURE DIVISION.
+       0000-MAIN-PARA.
+           OPEN INPUT  INFL1-REC INFL2-REC
+                OUTPUT OUTFL-REC.
+           PERFORM UNTIL END-OF-FILE1 AND END-OF-FILE2
+              IF NOT END-OF-FILE1
+                 READ INFL1-REC INTO WS-RECORD1
+                    AT END
+                       SET END-OF-FILE1 TO TRUE
+                    NOT AT END
+                       MOVE WS-RECORD1 TO WS-OUTPUT-RECORD
+                       WRITE OUTFL-RECORD FROM WS-OUTPUT-RECORD
+                 END-READ
+              END-IF
+              IF NOT END-OF-FILE2
+                 READ INFL2-REC INTO WS-RECORD2
+                    AT END
+                       SET END-OF-FILE2 TO TRUE
+                    NOT AT END
+                       MOVE WS-RECORD2 TO WS-OUTPUT-RECORD
+                       WRITE OUTFL-RECORD FROM WS-OUTPUT-RECORD
+                 END-READ
+              END-IF
+           END-PERFORM.
+           CLOSE INFL1-REC INFL2-REC OUTFL-REC.
+           STOP RUN.
