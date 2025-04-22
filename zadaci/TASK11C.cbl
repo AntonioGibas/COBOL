@@ -43,16 +43,15 @@
            DISPLAY "Procitani podaci: " INPUT-STRING.
 
        2000-SPLIT-WORDS.
-           PERFORM VARYING I FROM 1 BY 1 UNTIL I > LENGTH 
-              OF INPUT-STRING
+           PERFORM VARYING I FROM 1 BY 1 UNTIL I > LENGTH OF INPUT-STRING
                IF INPUT-STRING(I:1) = ' ' OR I = LENGTH OF INPUT-STRING
                    COMPUTE WORD-LENGTH = I - WORD-START
                    IF WORD-LENGTH > 0
                        ADD 1 TO NUM-RECORDS
-                     IF NUM-RECORDS > 10
-                      DISPLAY "Prekoracenje niza! Maksimalno 10 rijeci."
-                      EXIT PERFORM
-                     END-IF
+                       IF NUM-RECORDS > 10
+                           DISPLAY "Prekoracenje niza! Maksimalno 10 rijeci."
+                           EXIT PERFORM
+                       END-IF
                        MOVE INPUT-STRING(WORD-START:WORD-LENGTH) 
                          TO WORD-ENTRY(NUM-RECORDS)
                        COMPUTE WORD-START = I + 1
