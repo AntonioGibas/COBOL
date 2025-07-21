@@ -14,3 +14,11 @@ propertyGroups:
         type: local
         locations:
           - '**'
+      - name: maclib
+        type: local
+        locations:
+          - '**'
+      - name: proclib
+        type: local
+        locations:
+          - '**'
